@@ -33,6 +33,7 @@ def fetch_data(start, stop, symbol, interval, tick_limit, step):
 
 def get_data(pair, t_start, t_stop, bin_size):
     time_step = 60000000
+
     limit = 1000
     df = {}
     path = f'./data/{pair}_{t_start}-{t_stop}_{bin_size}.csv'
@@ -52,12 +53,12 @@ def get_data(pair, t_start, t_stop, bin_size):
 
 
 def main():
-    t_start = datetime.datetime(2019, 7, 1, 0, 0)
+    t_start = datetime.datetime(2020, 1, 1, 0, 0)
     t_start = time.mktime(t_start.timetuple()) * 1000
 
-    t_stop = datetime.datetime(2019, 8, 1, 0, 0)
+    t_stop = datetime.datetime(2020, 1, 31, 0, 0)
     t_stop = time.mktime(t_stop.timetuple()) * 1000
-    df = get_data(pair='btcusd', t_start=t_start, t_stop=t_stop, bin_size='1m')
+    df = get_data(pair='btcusd', t_start=t_start, t_stop=t_stop, bin_size='1d')
     print(df.head())
 
     # cerebro = bt.Cerebro()
@@ -70,7 +71,9 @@ def main():
     #df.plot(subplots=True)
     #plt.show()
 
-    df.astype('float').dtypes
+    # df.astype('float').dtypes
+
+
 
 
 if __name__ == '__main__':
